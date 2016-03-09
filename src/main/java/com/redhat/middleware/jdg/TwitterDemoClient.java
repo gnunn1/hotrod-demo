@@ -29,9 +29,10 @@ import java.io.InputStreamReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.infinispan.api.BasicCache;
-import org.infinispan.api.BasicCacheContainer;
+import org.infinispan.client.hotrod.RemoteCache;
+import org.infinispan.client.hotrod.RemoteCacheManager;
 
+import twitter4j.StallWarning;
 import twitter4j.Status;
 import twitter4j.StatusDeletionNotice;
 import twitter4j.StatusListener;
@@ -68,14 +69,14 @@ public class TwitterDemoClient extends DelayableDemoClient<Long, Status> {
 	private String accessTokenSecret;
 	private int maxEntries = DEFAULT_MAX_ENTRIES;
 
-	public TwitterDemoClient(BasicCache<Long, Status> cache,
+	public TwitterDemoClient(RemoteCache<Object,Object> cache,
 			String consumerKey, String consumerSecret) {
 		super(cache);
 		this.consumerKey = consumerKey;
 		this.consumerSecret = consumerSecret;
 	}
 
-	public TwitterDemoClient(BasicCacheContainer container, String cacheName,
+	public TwitterDemoClient(RemoteCacheManager container, String cacheName,
 			String consumerKey, String consumerSecret) {
 		super(container, cacheName);
 		this.consumerKey = consumerKey;
@@ -189,6 +190,11 @@ public class TwitterDemoClient extends DelayableDemoClient<Long, Status> {
 		}
 
 		public void onScrubGeo(long lat, long lng) {
+		}
+
+		public void onStallWarning(StallWarning arg0) {
+			// TODO Auto-generated method stub
+			
 		}
 	}
 	
