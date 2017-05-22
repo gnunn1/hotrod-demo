@@ -26,7 +26,7 @@
 			(see README.md) <infinispan.version>5.1.5.FINAL</infinispan.version> -->
 
 		<!-- For JDG version, add -redhat-1 -->
-		<infinispan.version>6.4.0.Final-redhat-4</infinispan.version>
+		<infinispan.version>8.1.7.Final-redhat-1</infinispan.version>
 
 	</properties>
 	<dependencies>
